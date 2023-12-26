@@ -1,7 +1,8 @@
 
 import './App.css';
-import NewForm from './components/Form';
+
 import MultiStep from './components/MultiStep';
+
 
 
 
@@ -10,7 +11,7 @@ function App() {
     <div className="App">
       <h1>React Form</h1>
       <MultiStep />
-      {/* <NewForm/> */}
+     
     </div>
   );
 }

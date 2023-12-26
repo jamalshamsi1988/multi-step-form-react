@@ -1,0 +1,50 @@
+.container{
+    background-color: #e2dcdc;
+    height: 300px;
+    width: 400px;
+    display: flex;
+    margin: auto;
+    padding: 50px;
+    justify-content: center;
+    border: 1px solid silver;
+}
+.form{
+    display: flex;
+    flex-direction: column;
+}
+.form label{
+    padding-bottom: 10px;
+    font-weight: 500;
+
+}
+.form input{
+    cursor: pointer;
+    outline: none;
+    border: 1px solid lightgray;
+    padding: 3px;
+    margin-bottom: 30px;
+}
+button{
+    padding: 7px;
+}
+.formStepCunt{
+    display: flex;
+    margin: 10px;
+    align-items: center;
+    text-align: center;
+}
+.formStepCunt button{
+  margin-right: 5px;
+  background-color: #e2dcdc;
+  align-items: center;
+  text-align: center;
+  border: none;
+}
+.formStepCunt svg{
+    padding-top: 10px;
+    cursor: pointer;
+}
+.checkbox{
+    display: flex;
+    flex-direction: column;  
+}
