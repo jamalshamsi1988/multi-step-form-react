@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 
 import styles from "./MultiStep.module.css";
+
 const MaxSetp = 4;
 
 const MultiStep = () => {
@@ -10,7 +11,7 @@ const MultiStep = () => {
   const {
     watch,
     register,
-    formState: { errors, isValid },
+    formState: { isValid },
     handleSubmit,
   } = useForm({ mode: "all" });
 
@@ -22,13 +23,13 @@ const MultiStep = () => {
       return <h1>The Form Is Completed</h1>;
     } else if (formStep === 3) {
       return (
-        <button type="submit" disabled={!isValid} >
+        <button type="submit" disabled={!isValid}>
           Finsh
         </button>
       );
     } else {
       return (
-        <button  disabled={!isValid} type="button" onClick={completeStep}>
+        <button disabled={!isValid} type="button" onClick={completeStep}>
           Next
         </button>
       );
@@ -43,6 +44,7 @@ const MultiStep = () => {
   const goToPreviousStep = () => {
     setFormStep((curnt) => curnt - 1);
   };
+
   return (
     <div className={styles.container}>
       <form className={styles.form} onSubmit={handleSubmit(submitForm)}>
@@ -74,33 +76,43 @@ const MultiStep = () => {
         )}
         {formStep === 0 && (
           <>
-            <label htmlFor="name">Name</label>{" "}
+            <label htmlFor="name">Name and Last Name</label>{" "}
             <input
               name="name"
               id="name"
               type="text"
-              {...register("Name", {
+              {...register("name", {
                 required: true,
                 message: "please Type Your Name",
+                pattern: /^[A-Za-z]+$/i,
               })}
             />
-            {errors.name && <p>{errors.name.message}</p>}
+            <input
+              name="lastName"
+              id="lastName"
+              type="text"
+              {...register("lastName", {
+                required: true,
+                message: "please Type Your Last Name",
+                pattern: /^[A-Za-z]+$/i,
+              })}
+            />
           </>
         )}
 
         {formStep === 1 && (
           <>
-            <label htmlFor="lastName">Last Name</label>{" "}
+            <label htmlFor="email">Email</label>{" "}
             <input
-              name="lastName"
-              id="lastName"
+              name="email"
+              id="email"
               type="text"
-              {...register("LastName", {
+              {...register("email", {
                 required: true,
-                message: "please Type Your Last Name",
+                message: "please Type Your Email",
+                pattern: /\S+@\S+\.\S+/,
               })}
             />
-            {errors.lastName && <p>{errors.lastName.message}</p>}
           </>
         )}
 
@@ -116,7 +128,6 @@ const MultiStep = () => {
                 message: "please Type Your Address",
               })}
             />
-            {errors.address && <p>{errors.address.message}</p>}
           </>
         )}
 
@@ -125,26 +136,26 @@ const MultiStep = () => {
             <div>
               <input
                 type="checkbox"
-                name="ac"
-                id="ac"
-                {...register("ac", {
+                name="roles"
+                id="roles"
+                {...register("roles", {
                   required: true,
-                  message: "please accepted",
+                  message: "please checked",
                 })}
               />
-              <label htmlFor="ac">I accepted all</label>
+              <label htmlFor="roles">I accepted all</label>
             </div>
             <div>
               <input
                 type="checkbox"
-                name="re"
-                id="ac"
-                {...register("re", {
+                name="roles"
+                id="roles"
+                {...register("roles", {
                   required: true,
-                  message: "please accepted",
+                  message: "please checked",
                 })}
               />
-              <label htmlFor="re">I agry with all</label>
+              <label htmlFor="roles">I agry with all</label>
             </div>
           </div>
         )}
